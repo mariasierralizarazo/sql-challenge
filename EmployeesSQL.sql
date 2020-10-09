@@ -65,7 +65,7 @@ CREATE TABLE dept_manager
       REFERENCES departments(dept_no)
 );
 
--- Dept_emp
+-- Dept_emp table
 CREATE TABLE dept_emp 
 (
     emp_no INT NOT NULL,
@@ -78,3 +78,72 @@ CREATE TABLE dept_emp
       REFERENCES departments(dept_no)
 );
 
+-- Copy files to the database (file_path represent an internal location where the file is saved with reading permisions)
+-- Titles tables
+COPY titles 
+FROM 'file_path\titles.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+-- Employees table
+COPY employees 
+FROM 'file_path\employees.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+-- Salaries table 
+COPY salaries 
+FROM 'file_path\salaries.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+-- Departments table
+COPY departments 
+FROM 'file_path\departments.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+-- Dept_manager table
+COPY dept_manager 
+FROM 'file_path\dept_emp.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+-- Dept_emp table
+COPY dept_emp 
+FROM 'file_path\dept_emp.csv' 
+WITH
+(
+	FORMAT 'csv',
+	DELIMITER ',',
+	HEADER
+);
+
+
+-- Ckecking the information from each table 
+SELECT * FROM employees;
+SELECT * FROM salaries;
+SELECT * FROM titles;
+SELECT * FROM departments;
+SELECT * FROM dept_manager;
+SELECT * FROM dept_emp;
